@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { ComponentProvider } from './components/ComponentProvider';
 
 import {
   ApolloClient,
@@ -12,7 +13,6 @@ import {
 
 // export const dataFromServer = (string) => gql`${string}`;
 
-
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com/',
   cache: new InMemoryCache()
@@ -20,7 +20,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <ComponentProvider>
+      <App />
+    </ComponentProvider>
   </ApolloProvider>,
   document.getElementById('root')
 );

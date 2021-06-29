@@ -1,32 +1,10 @@
-// export const Languages = () => {
-//   const { ComponentSchema, HOC } = useContext(ComponentContext);
+import { useContext } from 'react';
+import { ComponentContext } from './ComponentProvider';
+import { Finish } from './HOC';
 
-import { useContext } from "react";
-import { ComponentContext } from "./ComponentProvider";
+export const Languages = (props) => {
+  const { AsList } = useContext(ComponentContext);
+  const LanguagesList = AsList(props.languages, Finish);
 
-//   return HOC(ComponentSchema, 'languages');
-// }
-
-// import React from 'react';
-
-// import { dataFromServer } from '../index';
-
-// import {
-//   useQuery,
-// } from "@apollo/client";
-
-export const Languages = ({ array }) => {
-  const { ComponentSchema} = useContext(ComponentContext);
-
-
-  return (
-    <ComponentSchema array={array} />
-    // <ul>
-    //   {array.map(lang => (
-    //     <li key={lang.code}>
-    //       {lang.name}
-    //     </li>
-    //   ))}
-    // </ul>
-  )
+  return (<LanguagesList />)
 }

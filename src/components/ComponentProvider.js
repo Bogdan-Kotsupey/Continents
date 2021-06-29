@@ -1,4 +1,5 @@
 import React from 'react';
+import { AsList } from './HOC';
 
 import {
   gql,
@@ -6,88 +7,36 @@ import {
 } from "@apollo/client";
 
 export const ComponentContext = React.createContext({
-  HOC: () => { },
-  ComponentSchema: () => { },
-  simpleHOC: () => {},
+  asList: () => {},
   data: {},
 })
 
 export const ComponentProvider = ({ children }) => {
-  const ComponentSchema = ({ array }) => (
-    <ul>
-      {array.map(el => (
-        <li key={el.code}>
-          {el.name}
-        </li>
-      ))}
-    </ul>
-  )
-
-  const simpleHOC = (Component, obj, string) => {
-    return <Component array={obj[`${string}`]} />
-  }
-
-  const HOC = (Component, searchString, filter, nextSearch) => {
-    const { loading, error, data } = useQuery(gql`
-      query {
-        ${searchString}${filter} {
-          code
+  const { loading, error, data } = useQuery(gql`
+  query {
+    continents {
+      code
+      name
+      countries {
+        code
+        name
+        languages {
           name
-          ${nextSearch}
         }
       }
-    `);
-    console.log(data);
-
-    // const { loading, error, data } = useQuery(gql`
-    //   query {
-    //     continents {
-    //       code
-    //       name
-    //       countries {
-    //         code
-    //         name
-    //         languages {
-    //           name
-    //         }
-    //       }
-    //     }
-    //   }
-    // `);
-    // console.log(data);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-
-    localStorage.setItem('data', data)
-
-    const array = data[`${searchString}`];
-
-    return <Component array={array} />
+    }
   }
+`);
 
-//   const { loading, error, data } = useQuery(gql`
-//   query {
-//     continents {
-//       code
-//       name
-//       countries {
-//         code
-//         name
-//         languages {
-//           name
-//         }
-//       }
-//     }
-//   }
-// `);
-// console.log(data);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+
+  console.log(data);
 
   const contextValue = {
-    HOC,
-    ComponentSchema,
-    simpleHOC,
-    data: localStorage.data,
+    data,
+    AsList,
   }
 
   return (

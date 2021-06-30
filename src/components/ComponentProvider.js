@@ -22,6 +22,7 @@ export const ComponentProvider = ({ children }) => {
         name
         languages {
           name
+          code
         }
       }
     }
@@ -30,9 +31,6 @@ export const ComponentProvider = ({ children }) => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-
-  console.log(data);
 
   const contextValue = {
     data,

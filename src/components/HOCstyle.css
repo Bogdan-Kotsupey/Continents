@@ -1,0 +1,22 @@
+.list-group {
+  position: relative;
+}
+
+.list-item {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.node {
+  background-color: blue;
+  border: 1px black solid;
+  width: 200px;
+}
+
+.visible {
+  display: block;
+}
+
+.component-container {
+  display: none;
+}

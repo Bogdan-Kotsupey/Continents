@@ -5,13 +5,13 @@ import { ComponentContext } from './components/ComponentProvider';
 
 import './App.css';
 
+
 function App() {
   const { data, AsList } = useContext(ComponentContext);
-  const ContinentsList = AsList(data.continents, Countries);
+  const name = data.continents[data.continents.length - 1].name;
+  const ContinentsList = AsList(data.continents, Countries, name);
 
-  return (
-    <ContinentsList />
-  );
+  return (<ContinentsList />);
 }
 
 export default App;

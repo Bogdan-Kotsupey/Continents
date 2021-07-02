@@ -5,7 +5,7 @@ import { Languages } from './Languages';
 
 export const Countries = (props) => {
   const { AsList } = useContext(ComponentContext);
-  const CountriesList = AsList(props.countries, Languages);
+  const CountriesList = AsList(props.countries, Languages, true);
 
   return (<CountriesList />);
 }

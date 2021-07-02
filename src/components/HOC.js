@@ -4,44 +4,53 @@ import { v4 as uuidv4 } from 'uuid';
 
 import './HOCstyle.css';
 
-export const AsList = (items, SomeComponent = null, name) => {
+export const AsList = (items, SomeComponent, bool) => {
 
-  const onClick = (id, i, arr) => {
+  const onClick = (childrensId, i, arr, bool, groupKey) => {
 
-    if (i === arr.length - 1 && arr[i].name !== name ) {
-      const button = document.getElementById(id);
-      const upDiv = button.parentNode.parentNode.parentNode;
-      upDiv.style.display = 'none';
-      const liElements = upDiv.firstChild.children;
+    if (!bool && i === arr.length - 1) {
+      const someComponent = document.getElementById(groupKey).parentNode;
+      const upperSomeComponent = document.getElementById(someComponent.className).parentNode;
+      const nodes = document.getElementById(someComponent.className).children;
+      upperSomeComponent.style.display = 'none';
+      console.log(nodes);
 
-      [].forEach.call(liElements, function (li) {
-        li.lastChild.style.display = 'none';
+      [].forEach.call(nodes, function (noda) {
+        noda.lastChild.style.display = 'none';
       });
 
     } else {
-      const nextDiv = document.getElementById(id).nextElementSibling;
-      nextDiv.style.display = 'block';
+      if (bool) {
+        const childrensDiv = document.getElementById(childrensId);
+        childrensDiv.style.display = 'block';
+      }
     }
   };
 
+  const gruopKey = uuidv4();
+
+
   return () => (
-    <ul className='list-group'>
+    <div id={gruopKey} className='group' vlaue={1}>
       {items.map((item, i, arr) => {
-        const uniqueKey = uuidv4();
+        const itemKey = uuidv4();
+        const buttonKey = uuidv4();
+        const childrensKey = uuidv4();
 
         return (
-          <li key={item.code} className='list-item'>
+          <div key={itemKey} id={itemKey} className='item' value={2}>
             <button
               className='node'
-              id={uniqueKey}
-              onClick={(event) => onClick(event.target.id, i, arr)}
+              id={buttonKey}
+              value={3}
+              onClick={() => onClick(childrensKey, i, arr, bool, gruopKey)}
             >
               {item.name}
             </button>
-            <div className='component-container'><SomeComponent  {...item} /></div>
-          </li>
-        )
-      })}
-    </ul>
+            {bool && <div value={4} id={childrensKey} style={{display: 'none'}} className={gruopKey}><SomeComponent {...item}/></div>}
+          </div>
+        )}
+      )}
+     </div>
   )
 }

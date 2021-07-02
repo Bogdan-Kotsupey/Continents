@@ -1,22 +1,92 @@
-.list-group {
-  position: relative;
+.group {
+  margin-left: 20px;
+  max-width: 400px;
+  /* margin-bottom: 10px; */
+  /* margin-top: 10px; */
+  /* border-left: 1px black solid; */
 }
 
-.list-item {
-  list-style-type: none;
-  padding: 10px;
+
+
+.item {
+  /* position: relative; */
+  /* margin-bottom: 10px; */
+  /* margin-top: 10px; */
+  /* border-left: 1px black solid; */
+}
+
+.list-item::before {
+  /* content: '- - - -'; */
+  /* border-style: dotted; */
+  /* border-left: blue; */
 }
 
 .node {
-  background-color: blue;
-  border: 1px black solid;
-  width: 200px;
+  position: relative;
+  right: 10px;
+  width: 100%;
+  /* border-width: 1px; */
+  padding: 4px;
+  /* display: inline-block; */
+  text-align: start;
+  /* font: 400 18px system-ui; */
+  /* margin-bottom: 10px; */
+  /* margin-top: 10px; */
+
+  /* -webkit-writing-mode: horizontal-tb !important; */
+  /* -webkit-appearance: button; */
+  /* border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186); */
+  /* border-style: solid; */
+  /* border-width: 1px;
+  padding: 1px 7px 2px;
+  text-rendering: auto;
+  color: initial;
+  display: inline-block;
+  text-align: start;
+  margin: 0em;
+  font: 400 11px system-ui; */
+  /* border-left: 1px black solid; */
 }
 
-.visible {
-  display: block;
+#continents {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#countries {
+  margin-top: 10px;
+}
+
+#languages {
+  margin-top: 10px;
+}
+
+.node::before {
+  /* content: '.....'; */
+  /* width: 100px; */
+  /* position: absolute; */
+  /* border-color: #009933; */
+  /* border-style: dotted; */
+  /* border-bottom: dotted; */
+  /* border-width: 0.0005px; */
+  /* height: 1em; */
+  /* top: 1.3em;
+  left: 0.6em; */
+  /* margin-top: -1em; */
+  /* transform: rotate(45deg); */
+  /* width: 0.5em; */
 }
 
 .component-container {
+  /* padding: 10px; */
+  /* position: relative; */
   display: none;
+  /* border-left: 1px black solid; */
+  /* margin-top: 10px; */
+}
+
+.component-container::before {
+  /* content: '- - -'; */
+  /* position: relative; */
+  /* top: 20px; */
 }

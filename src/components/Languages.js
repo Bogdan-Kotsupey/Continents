@@ -3,7 +3,7 @@ import { ComponentContext } from './ComponentProvider';
 
 export const Languages = (props) => {
   const { AsList } = useContext(ComponentContext);
-  const LanguagesList = AsList(props.languages, AsList);
+  const LanguagesList = AsList(props.languages, AsList, false);
 
   return (<LanguagesList />)
 }

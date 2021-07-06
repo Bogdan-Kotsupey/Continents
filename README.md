@@ -8,57 +8,31 @@ Task:
 {
 
   "data": [
-  
-    {
-    
-      "name": "String",
-      
+  {
+    "name": "String",
       "children": [
-      
-        {
-        
-          "name": "String",
-          
+      {
+        "name": "String",
           "children": [
-          
-            // ...
-            
-          ]
-          
-        }, {
-        
+          // ...
+            ]
+          }, {
           "name": "String",
-          
           "children": [
-          
-            // ...
-            
-          ]
-          
-        },
-        
+          // ...
+            ]
+          },
         // ...
-        
-      ]
-      
-    }, {
-    
-      "name": "String",
-      
+         ]
+      }, {
+     "name": "String",
       "children": [
-      
-        // ...
-        
-      ]
-      
-    },
-    
+      // ...
+        ]
+      },
     // ...
-    
   ]
-  
 }
-
 
 This component should show each node's name and indicate relation to it's children nodes.
 

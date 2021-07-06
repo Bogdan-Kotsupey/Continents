@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
-import { Countries } from './components/Countries';
 
 import { ComponentContext } from './components/ComponentProvider';
 
 import './App.css';
+import { ListMaker } from './components/HOC'
 
 
 function App() {
-  const { data, AsList } = useContext(ComponentContext);
-  const ContinentsList = AsList(data.continents, Countries, true);
+  const { data } = useContext(ComponentContext);
 
-  return (<ContinentsList />);
+  return <ListMaker obj={data} str={'continents'} />
 }
 
 export default App;

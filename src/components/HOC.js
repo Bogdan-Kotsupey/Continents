@@ -1,56 +1,65 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
+import { ComponentContext } from './ComponentProvider';
 
-import './HOCstyle.css';
+export const ListMaker = ({ obj, str, indicator }) => {
+  const { treeClose } = useContext(ComponentContext);
+  const [isOpen, setOpen] = useState(false);
 
-export const AsList = (items, SomeComponent, bool) => {
-
-  const onClick = (childrensId, i, arr, bool, groupKey) => {
-
-    if (!bool && i === arr.length - 1) {
-      const someComponent = document.getElementById(groupKey).parentNode;
-      const upperSomeComponent = document.getElementById(someComponent.className).parentNode;
-      const nodes = document.getElementById(someComponent.className).children;
-      upperSomeComponent.style.display = 'none';
-      console.log(nodes);
-
-      [].forEach.call(nodes, function (noda) {
-        noda.lastChild.style.display = 'none';
-      });
-
+  const onClick = () => {
+    if(!obj.hasOwnProperty("children") && indicator) {
+      treeClose(setOpen, obj.children)
+      console.log(6);
     } else {
-      if (bool) {
-        const childrensDiv = document.getElementById(childrensId);
-        childrensDiv.style.display = 'block';
-      }
+      setOpen(true);
     }
-  };
+  }
 
-  const gruopKey = uuidv4();
+  useEffect(() => {
+    if (!obj.hasOwnProperty("name")) {
+      setOpen(true);
+    }
+  }, [])
 
+  return (
+    <div className={`group ${str}`}>
+      {obj.hasOwnProperty('name') &&
+        <>
+          {<button onClick={() => onClick(obj.children)} className={`node`}>
+            {obj.name}
+          </button>}
+        </>
+      }
+      {obj.hasOwnProperty('children') &&
+        obj.children.length > 0 &&
+        obj.children.map((el, i, arr) => {
+          return <>
+            {isOpen &&
+            <ListMaker
+              obj={el}
+              key={i}
+              indicator={i === arr.length - 1}
+            />}
+          </>
+        })
+      }
+    </div>
 
-  return () => (
-    <div id={gruopKey} className='group' vlaue={1}>
-      {items.map((item, i, arr) => {
-        const itemKey = uuidv4();
-        const buttonKey = uuidv4();
-        const childrensKey = uuidv4();
-
-        return (
-          <div key={itemKey} id={itemKey} className='item' value={2}>
-            <button
-              className='node'
-              id={buttonKey}
-              value={3}
-              onClick={() => onClick(childrensKey, i, arr, bool, gruopKey)}
-            >
-              {item.name}
-            </button>
-            {bool && <div value={4} id={childrensKey} style={{display: 'none'}} className={gruopKey}><SomeComponent {...item}/></div>}
-          </div>
-        )}
-      )}
-     </div>
+//     <div className="group">
+//   {obj.hasOwnProperty("children") &&
+//     obj.children.length > 0 &&
+//     obj.children.map((el, i, arr) => {
+//       return <div className="item">
+//         {el.hasOwnProperty("name") &&
+//           <>
+//             <button onClick={onClick} className="node">
+//               {el.name}
+//             </button>
+//             {isGlobalOpen && <ListMaker obj={el} key={i} />}
+//           </>
+//         }
+//       </div>
+//     })}
+// </div>
   )
 }

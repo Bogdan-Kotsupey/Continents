@@ -6,14 +6,12 @@ Task:
 1. Create a reactjs application which is capable to render nested json data struture of the following format:
 
 {
-
-  "data": [
-  
+  "data":[
   {
+  
     "name": "String",
       "children": [
       {
-      
         "name": "String",
           "children": [
           // ...

@@ -3,13 +3,17 @@ import React, { useContext } from 'react';
 import { ComponentContext } from './components/ComponentProvider';
 
 import './App.css';
-import { ListMaker } from './components/HOC'
+import { ParentList } from './components/HOC'
 
 
 function App() {
   const { data } = useContext(ComponentContext);
 
-  return <ListMaker obj={data} str={'continents'} />
+  return <div className="parent-group">
+    {data.children.map(item => (
+      <ParentList obj={item} />
+    ))}
+  </div>
 }
 
 export default App;

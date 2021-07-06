@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-
-import { ComponentContext } from './ComponentProvider';
+import React, { useEffect, useState } from 'react';
 
 export const ListMaker = ({ obj, str, indicator }) => {
-  const { treeClose } = useContext(ComponentContext);
   const [isOpen, setOpen] = useState(false);
 
   const onClick = () => {
     if(!obj.hasOwnProperty("children") && indicator) {
-      treeClose(setOpen, obj.children)
       console.log(6);
     } else {
       setOpen(true);
@@ -55,7 +51,7 @@ export const ListMaker = ({ obj, str, indicator }) => {
 //             <button onClick={onClick} className="node">
 //               {el.name}
 //             </button>
-//             {isGlobalOpen && <ListMaker obj={el} key={i} />}
+//             {isOpen && <ListMaker obj={el} key={i} />}
 //           </>
 //         }
 //       </div>

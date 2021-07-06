@@ -42,6 +42,6 @@ This component should show each node's name and indicate relation to it's childr
 
 4. Using react context make it so when you click on any last node it will close all nodes in the tree.
 
-5. Generate data for your component so it can open to n-th level with m children in each node.
+5. Generate data for your component so it can open to n-th level with m children in each node. (not-complete)
 
 6. Connect this countries graphql API to your components to display nesting of Continent, Country and Language types

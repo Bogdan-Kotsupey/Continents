@@ -4,33 +4,61 @@ Task:
 (позиция закрыта, делал для себя)
 
 1. Create a reactjs application which is capable to render nested json data struture of the following format:
+
 {
+
   "data": [
+  
     {
+    
       "name": "String",
+      
       "children": [
+      
         {
+        
           "name": "String",
+          
           "children": [
+          
             // ...
+            
           ]
+          
         }, {
+        
           "name": "String",
+          
           "children": [
+          
             // ...
+            
           ]
+          
         },
+        
         // ...
+        
       ]
+      
     }, {
+    
       "name": "String",
+      
       "children": [
+      
         // ...
+        
       ]
+      
     },
+    
     // ...
+    
   ]
+  
 }
+
 
 This component should show each node's name and indicate relation to it's children nodes.
 
